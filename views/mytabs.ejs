@@ -1,0 +1,80 @@
+<% include _header %>
+    <div class="menu">
+        <div class="menulinks">
+        <% for(let i = 0; i<links.length; i++) { %>
+            <a href="/mytabs/<%= links[i] %>">
+                <%= links[i].substring(0,1).toUpperCase()+links[i].substring(1) %>
+            </a>
+            <% } %>
+        </div>
+        
+        <div class="createCollection">
+         <input type="text" id="createCollectionInp" placeholder="Create new group"><button id="createCollectionBut">Create</button>
+          
+        </div>
+    </div>
+<div class="main">
+    <div class="windowDiv">
+        <div class="closeWindow">x</div>
+         <label class="text"> Title:</label><label> <input type="text" id="title" size="35"></label>
+      <label class="text"> URL:</label><label>  <input type="text" id="url" size="35"></label>
+        <label class="text"> Image URL:</label> <label>  <input type="text" id="img_url" size="35"></label>
+        <label><button id="submit">Add</button></label>
+    </div>
+
+    <div class="windowEditDiv">
+        <div class="closeWindow">x</div>
+        <label> <input type="text" class="edittitle" size="35"></label>
+        <label>  <input type="text" class="editurl" size="35"></label>
+        <label> <input type="text" class="editimg_url" size="35"></label>
+        <label><button class="editsubmit">Edit</button></label>
+    </div>
+
+    <div class="tabs">
+        <% for(let i = 0; i<tabs.length; i++) { %>
+            <div class="tab" data-url="<%= tabs[i]['url'] %>">
+              <img src="<%= tabs[i]['img_url'] %>">
+                <div class="title">
+                    <%= tabs[i]["title"] %>
+                </div>
+                <div class="counter">
+                    <%= tabs[i]["counter"] %>
+                </div>
+            </div>
+            <% } %>
+                <div id="newtab">
+                   <i class="fa fa-3x fa-plus-circle" aria-hidden="true"></i>
+                </div>
+
+                <div class="configDiv">
+                    <div class="closeIcon">x</div>
+                    <div class="title">Settings</div>
+                    <div class="configMain">
+                    <div class="row">
+                        <label class="textleft">Column quantity:</label>
+                        <label class="textright"><input type="range" min="2" max="15" value="5" id="quantity"> </label>
+                    </div>
+
+                    <div class="row">
+                        <label class="textleft">Distance:</label>
+                        <label class="textright"><input type="range" min="1" max="20" value="10" id="distance"> 
+                      <div class="second">value</div></label>  
+                    </div>
+
+                    <div class="row">
+                        <label class="textleft">Width:</label>
+                        <label class="textright"><input type="range" min="50" max="100" value="100" id="widthTabs">
+                        <div class="third">value</div></label>
+                    </div>
+                    <div class="row">
+                    <a class="link" href="/session/destroy">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+    <script src="/js/tabs.js"></script>
+    <script src="/js/tabsinterface.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="/js/ui.js"></script>
+    <% include _footer %>
